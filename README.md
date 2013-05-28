@@ -11,7 +11,7 @@ To run:
 	cp longpoll.html /var/www/html/gopubsub
 	go run gopubsub.go
 
-Then browser to:
+Then browse to:
 
 	http://127.0.0.1:4000/longpoll.html
 
