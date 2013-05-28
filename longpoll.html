@@ -1,0 +1,31 @@
+<html>
+<head>
+    <title>gopubsub</title>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
+    <script type="text/javascript" charset="utf-8">
+
+    function writeMessage( msg ){
+        $("#messages").append(
+            "<div>"+ msg +"</div>"
+        );
+    }
+
+    (function poll(){
+        $.ajax({ url: "http://127.0.0.1:4000/poll",
+            success: function( data ){
+    	       writeMessage( data )
+            },
+            dataType: "json",
+            complete: poll,
+            error: function ( xhr, ajaxOptions, thrownError ) {
+                writeMessage( thrownError );
+            },
+            timeout: 30000 });
+    })();
+
+    </script>
+</head>
+<body>
+    <div id="messages"></div>
+</body>
+</html>
